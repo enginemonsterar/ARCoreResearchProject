@@ -747,8 +747,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 3
-  cloudProjectId: 08f12445-dc87-4328-adf4-5b05029f5e51
-  projectName: CloudAnchors U3D
+  cloudProjectId: 8f0ef7bb-b02f-4d33-992b-64635feb358c
+  projectName: AugmentedImage U3D
   organizationId: enginemonsterar
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
