@@ -53,7 +53,8 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <summary>
         /// The Cloud Anchors Example Controller.
         /// </summary>
-        public CloudAnchorsExampleController CloudAnchorsExampleController;
+        // public CloudAnchorsExampleController CloudAnchorsExampleController;
+        public MyAnchorController myAnchorController;
 
         /// <summary>
         /// The Panel containing the list of available rooms to join.
@@ -276,7 +277,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                     button.GetComponentInChildren<Button>().onClick.AddListener(() =>
                         _OnJoinRoomClicked(match));
                     button.GetComponentInChildren<Button>().onClick.AddListener(
-                        CloudAnchorsExampleController.OnEnterResolvingModeClick);
+                        // CloudAnchorsExampleController.OnEnterResolvingModeClick);
+                        myAnchorController.OnEnterResolvingModeClick);
                     button.SetActive(true);
                 }
             }
