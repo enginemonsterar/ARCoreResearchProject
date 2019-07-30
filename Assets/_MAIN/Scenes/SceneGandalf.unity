@@ -113,6 +113,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &24366904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24366906}
+  - component: {fileID: 24366905}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &24366905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 24366904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ebedac33472f14795ac96c5fe18f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnchorAlreadyAdded: 0
+--- !u!4 &24366906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 24366904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67495579
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265054091}
-  - component: {fileID: 265054090}
+  - component: {fileID: 265054092}
   m_Layer: 0
   m_Name: Cloud Anchor Controller
   m_TagString: Untagged
@@ -478,22 +519,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &265054090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 265054089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea0532ba163745069c0894560a451b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIController: {fileID: 1077067569}
-  ARCoreRoot: {fileID: 1995596071}
-  ARCoreWorldOriginHelper: {fileID: 635649539}
-  ARKitRoot: {fileID: 1943188169}
-  ARKitFirstPersonCamera: {fileID: 1443761023}
 --- !u!4 &265054091
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +532,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265054092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 265054089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5af318ab378da34a8486e6ddd574a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManagerUIController: {fileID: 1077067569}
+  arCoreRootGO: {fileID: 1995596071}
+  arCoreWorldOriginHelper: {fileID: 635649539}
+  arKitRootGO: {fileID: 1943188169}
+  arKitFirstPersonCamera: {fileID: 1443761023}
 --- !u!1 &318443683
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +756,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 265054090}
+      - m_Target: {fileID: 265054092}
         m_MethodName: OnEnterHostingModeClick
         m_Mode: 1
         m_Arguments:
@@ -1061,8 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cac8edf84834043ac167deaeba16a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planePrefab: {fileID: 1372998203143648, guid: f879aaf3eeb0c467eb22cbaf08dc97a4,
-    type: 2}
 --- !u!1 &589716847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,10 +1358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec20d460fbb7e4f92b4d84a10da98cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCloudParticlePrefab: {fileID: 198314236125653888, guid: 87db9decf4b3e4cb8bf3eea22ccd37f5,
-    type: 2}
-  maxPointsToShow: 10000
-  particleSize: 0.01
 --- !u!1 &678424364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1594,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1517545619891756, guid: c162c528b139240d0881c95be8c04f2b, type: 2}
-  - {fileID: 1930613698465500, guid: d7e51cffc46904f65957fa3aeb255467, type: 2}
+  - {fileID: 1061039837045476, guid: 03f96842881dba249b92ed84081971c3, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1642,7 +1677,7 @@ MonoBehaviour:
   LobbyScreen: {fileID: 1184477165}
   SnackbarText: {fileID: 452127690}
   CurrentRoomLabel: {fileID: 140788285}
-  CloudAnchorsExampleController: {fileID: 265054090}
+  myAnchorController: {fileID: 265054092}
   RoomListPanel: {fileID: 378851853}
   NoPreviousRoomsText: {fileID: 1671322867}
   JoinRoomListRowPrefab: {fileID: 1354654415800822, guid: 4073389a0b5c441279cad38804356fab,
@@ -2022,7 +2057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58ecea7a196242dd879c814ac05084c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ClearMaterial: {fileID: 2100000, guid: f1d9352050a75486f878ab19fa578f16, type: 2}
 --- !u!20 &1443761023
 Camera:
   m_ObjectHideFlags: 0
@@ -2107,13 +2141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462d46d2423bb4f738d2497a397b1590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1443761023}
-  startAlignment: 0
-  planeDetection: 3
-  detectionImages: {fileID: 0}
-  getPointCloud: 1
-  enableLightEstimation: 1
-  enableAutoFocus: 1
 --- !u!114 &1557232356
 MonoBehaviour:
   m_ObjectHideFlags: 0
