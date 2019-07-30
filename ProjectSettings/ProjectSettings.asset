@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: MonsterAR
-  productName: AugmentedImage U3D
+  productName: Test Gandalf Mechanic
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -151,9 +151,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: id.monsterar.arcoretes
+    Android: com.monsterar.testgandalf
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -747,8 +747,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 3
-  cloudProjectId: 8f0ef7bb-b02f-4d33-992b-64635feb358c
-  projectName: AugmentedImage U3D
+  cloudProjectId: 08f12445-dc87-4328-adf4-5b05029f5e51
+  projectName: CloudAnchors U3D
   organizationId: enginemonsterar
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
