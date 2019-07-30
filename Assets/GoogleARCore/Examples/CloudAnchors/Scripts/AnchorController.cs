@@ -54,16 +54,18 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <summary>
         /// The Cloud Anchors example controller.
         /// </summary>
-        private CloudAnchorsExampleController m_CloudAnchorsExampleController;
+        // private CloudAnchorsExampleController m_CloudAnchorsExampleController;
+        private MyAnchorController m_MyAnchorController;
 
         /// <summary>
         /// The Unity Start() method.
         /// </summary>
         public void Start()
         {
-            m_CloudAnchorsExampleController =
-                GameObject.Find("CloudAnchorsExampleController")
-                    .GetComponent<CloudAnchorsExampleController>();
+            // m_CloudAnchorsExampleController =
+            //     GameObject.Find("CloudAnchorsExampleController")
+            //         .GetComponent<CloudAnchorsExampleController>();
+            m_MyAnchorController = GameObject.Find("MyAnchorController").GetComponent<MyAnchorController>();
         }
 
         /// <summary>
@@ -130,7 +132,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                 {
                     Debug.Log(string.Format("Failed to host Cloud Anchor: {0}", result.Response));
 
-                    m_CloudAnchorsExampleController.OnAnchorHosted(
+                    // m_CloudAnchorsExampleController.OnAnchorHosted(
+                    m_MyAnchorController.OnAnchorHosted(
                         false, result.Response.ToString());
                     return;
                 }
@@ -139,7 +142,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                     "Cloud Anchor {0} was created and saved.", result.Anchor.CloudId));
                 CmdSetCloudAnchorId(result.Anchor.CloudId);
 
-                m_CloudAnchorsExampleController.OnAnchorHosted(true, result.Response.ToString());
+                // m_CloudAnchorsExampleController.OnAnchorHosted(true, result.Response.ToString());
+                m_MyAnchorController.OnAnchorHosted(true, result.Response.ToString());
             });
 #endif
         }
@@ -150,7 +154,8 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <param name="cloudAnchorId">Cloud anchor id to be resolved.</param>
         private void _ResolveAnchorFromId(string cloudAnchorId)
         {
-            m_CloudAnchorsExampleController.OnAnchorInstantiated(false);
+            // m_CloudAnchorsExampleController.OnAnchorInstantiated(false);
+            m_MyAnchorController.OnAnchorInstantiated(false);
 
             // If device is not tracking, let's wait to try to resolve the anchor.
             if (Session.Status != SessionStatus.Tracking)
@@ -169,7 +174,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                                 "Client could not resolve Cloud Anchor {0}: {1}",
                                 cloudAnchorId, result.Response));
 
-                            m_CloudAnchorsExampleController.OnAnchorResolved(
+                            // m_CloudAnchorsExampleController.OnAnchorResolved(
+                            m_MyAnchorController.OnAnchorResolved(
                                 false, result.Response.ToString());
                             m_ShouldResolve = true;
                             return;
@@ -179,7 +185,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                             "Client successfully resolved Cloud Anchor {0}.",
                             cloudAnchorId));
 
-                        m_CloudAnchorsExampleController.OnAnchorResolved(
+                        // m_CloudAnchorsExampleController.OnAnchorResolved(
+                        m_MyAnchorController.OnAnchorResolved(
                             true, result.Response.ToString());
                         _OnResolved(result.Anchor.transform);
                     }));
@@ -191,8 +198,10 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <param name="anchorTransform">Transform of the resolved Cloud Anchor.</param>
         private void _OnResolved(Transform anchorTransform)
         {
-            var cloudAnchorController = GameObject.Find("CloudAnchorsExampleController")
-                                                  .GetComponent<CloudAnchorsExampleController>();
+            // var cloudAnchorController = GameObject.Find("CloudAnchorsExampleController")
+            //                                       .GetComponent<CloudAnchorsExampleController>();
+            var cloudAnchorController = GameObject.Find("MyAnchorController")
+                                                  .GetComponent<MyAnchorController>();
             cloudAnchorController.SetWorldOrigin(anchorTransform);
         }
 

@@ -40,6 +40,10 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// </summary>
         public GameObject AnchorPrefab;
 
+        [SerializeField] GameManager gameManager;
+
+        NetworkIdentity networkID;
+
         /// <summary>
         /// The Unity OnStartLocalPlayer() method.
         /// </summary>
@@ -50,6 +54,34 @@ namespace GoogleARCore.Examples.CloudAnchors
             // A Name is provided to the Game Object so it can be found by other Scripts, since this
             // is instantiated as a prefab in the scene.
             gameObject.name = "LocalPlayer";
+
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            networkID = GetComponent<NetworkIdentity>();
+            
+            Debug.Log("isServer : " + networkID.isServer);
+
+            // if (networkID.isServer)
+            // {
+            //     RpcSetAnchor(true);
+            // }
+            // else
+            // {
+            //     CmdSetAnchor(true);
+            // }
+        }
+
+        [ClientRpc]
+        public void RpcSetAnchor (bool anchorValue)
+        {
+            Debug.LogWarning("isAnchorAlreadyAdded : " + gameManager.isAnchorAlreadyAdded);
+            gameManager.RpcSetAnchor(anchorValue);
+        }
+
+        [Command]
+        public void CmdSetAnchor (bool anchorValue)
+        {
+            Debug.LogWarning("isAnchorAlreadyAdded : " + gameManager.isAnchorAlreadyAdded);
+            gameManager.CmdSetAnchor(anchorValue);
         }
 
         /// <summary>
@@ -60,6 +92,17 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <param name="anchor">The ARCore Anchor to be hosted.</param>
         public void SpawnAnchor(Vector3 position, Quaternion rotation, Component anchor)
         {
+            if (gameManager.isAnchorAlreadyAdded) return;
+            
+            if (networkID.isServer)
+            {
+                RpcSetAnchor(true);
+            }
+            else
+            {
+                CmdSetAnchor(true);
+            }
+
             // Instantiate Anchor model at the hit pose.
             var anchorObject = Instantiate(AnchorPrefab, position, rotation);
 
