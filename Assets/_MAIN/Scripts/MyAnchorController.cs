@@ -55,7 +55,7 @@ public class MyAnchorController : MonoBehaviour
 
 		// A Name is provided to the Game Object so it can be found by other Scripts
 		// instantiated as prefabs in the scene.
-		gameObject.name = "CloudAnchorsExampleController";
+		gameObject.name = "MyAnchorController";
 		arCoreRootGO.SetActive(false);
 		arKitRootGO.SetActive(false);
 		_ResetStatus();

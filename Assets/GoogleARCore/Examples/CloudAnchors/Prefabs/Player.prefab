@@ -55,6 +55,7 @@ MonoBehaviour:
   StarPrefab: {fileID: 1517545619891756, guid: c162c528b139240d0881c95be8c04f2b, type: 2}
   AnchorPrefab: {fileID: 1061039837045476, guid: 03f96842881dba249b92ed84081971c3,
     type: 2}
+  gameManager: {fileID: 0}
 --- !u!114 &114909607304245616
 MonoBehaviour:
   m_ObjectHideFlags: 1

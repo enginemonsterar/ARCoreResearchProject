@@ -9,8 +9,14 @@ public class GameManager : NetworkBehaviour
 	public bool isAnchorAlreadyAdded;
 
 	[ClientRpc]
-	public void RpcSyncVarIsAnchorAlreadyAdded (bool isAnchorAlreadyAdded)
+	public void RpcSetAnchor (bool anchorValue)
 	{
-		this.isAnchorAlreadyAdded = isAnchorAlreadyAdded;
+		isAnchorAlreadyAdded = anchorValue;
+	}
+
+	[Command]
+	public void CmdSetAnchor (bool anchorValue)
+	{
+		isAnchorAlreadyAdded = anchorValue;
 	}
 }
